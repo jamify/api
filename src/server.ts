@@ -1,16 +1,16 @@
-import http from "http";
-import express from "express";
-import { applyMiddleware, applyRoutes } from "./utils";
-import routes from "./services";
-import middleware from "./middleware";
-import errorHandlers from "./middleware/errorHandlers";
+import http from 'http';
+import express from 'express';
+import { applyMiddleware, applyRoutes } from './utils';
+import routes from './services';
+import middleware from './middleware';
+import errorHandlers from './middleware/errorHandlers';
 
-process.on("uncaughtException", e => {
+process.on('uncaughtException', (e) => {
   console.log(e);
   process.exit(1);
 });
 
-process.on("unhandledRejection", e => {
+process.on('unhandledRejection', (e) => {
   console.log(e);
   process.exit(1);
 });
@@ -23,6 +23,4 @@ applyMiddleware(middleware, router);
 applyRoutes(routes, router);
 applyMiddleware(errorHandlers, router);
 
-server.listen(PORT, () =>
-  console.log(`Server is running http://localhost:${PORT}...`)
-);
+server.listen(PORT, () => console.log(`Server is running http://localhost:${PORT}...`));

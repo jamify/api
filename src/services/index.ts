@@ -1,3 +1,3 @@
-import healthRoutes from "./health/routes";
+import healthRoutes from './health/routes';
 
 export default [...healthRoutes];
