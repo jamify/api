@@ -1,3 +1,4 @@
-import healthRoutes from './health/routes';
+import channelRoutes from './channel/routes';
+import otherRoutes from './others/routes';
 
-export default [...healthRoutes];
+export default [...channelRoutes, ...otherRoutes];
