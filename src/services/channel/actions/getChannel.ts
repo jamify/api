@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { MongooseDocument } from 'mongoose';
 
-import Channel from '../../../models/schema/channels.model';
+import Channel from '../../../models/schema/channel.model';
 import Logger from '../../../logger';
 
-const logger: Logger = new Logger('GETCHANNEL');
+const logger: Logger = new Logger('[GET]CHANNEL');
 
 export default (req: Request, res: Response): void => {
   Channel.find({}, (e: Error, channels: MongooseDocument) => {
@@ -22,5 +22,3 @@ export default (req: Request, res: Response): void => {
     }
   });
 };
-
-// prAFq2G6mIBy4RYN

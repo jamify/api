@@ -1,11 +1,11 @@
-import http from 'http';
 import express from 'express';
+import http from 'http';
 import mongoose from 'mongoose';
 
 import { applyMiddleware, applyRoutes } from './utils';
-import routes from './services';
-import middleware from './middleware';
 import errorHandlers from './middleware/errorHandlers';
+import middleware from './middleware';
+import routes from './services';
 import Logger from './logger';
 
 const logger: Logger = new Logger('API');
@@ -16,13 +16,14 @@ mongoose.connect('mongodb+srv://cusadmin:prAFq2G6mIBy4RYN@jamify-r5cnx.mongodb.n
   useUnifiedTopology: true,
 });
 
-process.on('uncaughtException', (e) => {
+process.on('uncaughtException', (e: Error) => {
   logger.atError().withMessage(e.message).log();
   process.exit(1);
 });
 
-process.on('unhandledRejection', (e) => {
-  logger.atError().withMessage('unhandled rejection').log();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+process.on('unhandledRejection', (e: any) => {
+  logger.atError().withMessage(e.message).log();
   process.exit(1);
 });
 
