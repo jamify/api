@@ -1,11 +1,13 @@
 import {
-  handleCors,
   handleBodyRequestParsing,
   handleCompression,
+  handleCors,
+  handleLogging,
 } from './common';
 
 export default [
-  handleCors,
   handleBodyRequestParsing,
   handleCompression,
+  handleCors,
+  handleLogging,
 ];

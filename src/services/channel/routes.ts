@@ -1,13 +1,18 @@
-import { getChannel, postChannel } from './actions';
+import { getChannel, patchChannel, postChannel } from './actions';
 
 export default [
   {
-    path: '/channel',
+    path: '/channels',
     method: 'get',
     handler: getChannel,
   },
   {
-    path: '/channel',
+    path: '/channels/:id',
+    method: 'patch',
+    handler: patchChannel,
+  },
+  {
+    path: '/channels',
     method: 'post',
     handler: postChannel,
   },

@@ -14,5 +14,9 @@
         },
         "src": "/.*",
         "dest": "/src/server.ts"
-    }]
+    }],
+    "env": {
+        "PUBSUB_URI": "@pubsub-uri",
+        "MONGODB_URI": "@mongodb-uri"
+    }
 }

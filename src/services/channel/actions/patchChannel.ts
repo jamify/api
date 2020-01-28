@@ -7,9 +7,9 @@ import Instance from '../../../instance';
 export default async (req: Request, res: Response): Promise<void> => {
   try {
     const channel = await Channel.findByIdAndUpdate(
-      req.body.id,
+      req.params.id,
       {
-        track: {},
+        track: req.body.track,
         updatedAt: Date.now(),
       }, {
         setDefaultsOnInsert: true,
@@ -17,11 +17,11 @@ export default async (req: Request, res: Response): Promise<void> => {
         new: true,
       },
     );
-    res.status(201).json({
+    res.status(200).json({
       isSuccess: true,
       channel,
     });
-    Instance.SOCKET.emit(Event.PROPAGATE, req.body.id, {});
+    Instance.SOCKET.emit(Event.PROPAGATE, req.params.id, req.body.track);
   } catch (e) {
     Instance.LOGGER.atError().withMessage(e.message).log();
     res.status(500).json({
