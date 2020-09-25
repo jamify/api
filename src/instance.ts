@@ -12,7 +12,7 @@ class Instance {
   public static readonly LOGGER: Logger = new Logger("API");
 
   public static readonly SOCKET: SocketIOClient.Socket = io.connect(
-    String(process.env.PUBSUB_URI)
+    "https://jamify-pubsub.herokuapp.com"
   );
 
   private static readonly PORT: string = "3002";
@@ -24,7 +24,6 @@ class Instance {
   private server: Server;
 
   constructor() {
-    console.log(process.env.PUBSUB_URI);
     this.port = process.env.port || Instance.PORT;
     this.app = express();
     this.server = createServer(this.app);
