@@ -1,21 +1,21 @@
-import dotenv from 'dotenv';
-import express, { Application } from 'express';
-import io from 'socket.io-client';
-import mongoose from 'mongoose';
-import { Server, createServer } from 'http';
+import dotenv from "dotenv";
+import express, { Application } from "express";
+import io from "socket.io-client";
+import mongoose from "mongoose";
+import { Server, createServer } from "http";
 
-import Logger from './logger';
+import Logger from "./logger";
 
 dotenv.config();
 
 class Instance {
-  public static readonly LOGGER: Logger = new Logger('API');
+  public static readonly LOGGER: Logger = new Logger("API");
 
   public static readonly SOCKET: SocketIOClient.Socket = io.connect(
     String(process.env.PUBSUB_URI)
   );
 
-  private static readonly PORT: string = '3002';
+  private static readonly PORT: string = "3002";
 
   private app: Application;
 
@@ -24,6 +24,7 @@ class Instance {
   private server: Server;
 
   constructor() {
+    console.log(process.env.PUBSUB_URI);
     this.port = process.env.port || Instance.PORT;
     this.app = express();
     this.server = createServer(this.app);
