@@ -1,4 +1,3 @@
-import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Application } from 'express';
 import io from 'socket.io-client';
@@ -12,8 +11,9 @@ dotenv.config();
 class Instance {
   public static readonly LOGGER: Logger = new Logger('API');
 
-  public static readonly SOCKET: SocketIOClient.Socket =
-    io.connect(String(process.env.PUBSUB_URI));
+  public static readonly SOCKET: SocketIOClient.Socket = io.connect(
+    String(process.env.PUBSUB_URI)
+  );
 
   private static readonly PORT: string = '3002';
 
@@ -42,7 +42,9 @@ class Instance {
 
   private listen(): void {
     this.server.listen(this.port, (): void => {
-      Instance.LOGGER.atInfo().withMessage(`Server is running http://localhost:${this.port}`).log();
+      Instance.LOGGER.atInfo()
+        .withMessage(`Server is running http://localhost:${this.port}`)
+        .log();
     });
   }
 
