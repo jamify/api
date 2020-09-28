@@ -28,7 +28,7 @@ class Instance {
   private server: Server;
 
   constructor() {
-    this.port = process.env.port || Instance.PORT;
+    this.port = process.env.PORT || Instance.PORT;
     this.app = express();
     this.server = createServer(this.app);
     this.connectToMongoDB();
