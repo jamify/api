@@ -1,21 +1,25 @@
-import dotenv from "dotenv";
-import express, { Application } from "express";
-import io from "socket.io-client";
-import mongoose from "mongoose";
-import { Server, createServer } from "http";
+import dotenv from 'dotenv';
+import express, { Application } from 'express';
+import mongoose from 'mongoose';
+import { Server, createServer } from 'http';
 
-import Logger from "./logger";
+import Logger from './logger';
+import Pusher from 'pusher';
 
 dotenv.config();
 
 class Instance {
-  public static readonly LOGGER: Logger = new Logger("API");
+  public static readonly LOGGER: Logger = new Logger('API');
 
-  public static readonly SOCKET: SocketIOClient.Socket = io.connect(
-    "https://jamify-pubsub.herokuapp.com"
-  );
+  public static readonly PUSHER: Pusher = new Pusher({
+    appId: String(process.env.PUSHER_APP_ID),
+    key: String(process.env.PUSHER_KEY),
+    secret: String(process.env.PUSHER_SECRET),
+    cluster: String(process.env.PUSHER_CLUSTER),
+    encrypted: true,
+  });
 
-  private static readonly PORT: string = "3002";
+  private static readonly PORT: string = '3002';
 
   private app: Application;
 

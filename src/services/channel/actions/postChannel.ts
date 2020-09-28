@@ -24,7 +24,6 @@ export default async (req: Request, res: Response): Promise<void> => {
       isSuccess: true,
       channel,
     });
-    Instance.SOCKET.emit(Event.PROPAGATE, req.body.id, {});
   } catch (e) {
     Instance.LOGGER.atError()
       .withMessage(e.message)
