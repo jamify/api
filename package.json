@@ -8,7 +8,7 @@
     "lint": "eslint \"src/**/*.ts\"",
     "clean": "rm -rf ./node_modules",
     "postinstall": "npx tsc",
-    "start": "npx pm2 start pm2.yaml",
+    "start": "tsc && node dist/server.js",
     "test": "jest"
   },
   "author": "wuon",
