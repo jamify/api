@@ -20,11 +20,11 @@ export default async (req: Request, res: Response): Promise<void> => {
         new: true,
       }
     );
+    Instance.PUSHER.trigger(req.params.id, Event.TRACK, req.body);
     res.status(200).json({
       isSuccess: true,
       channel,
     });
-    Instance.PUSHER.trigger(req.params.id, Event.TRACK, req.body);
   } catch (e) {
     Instance.LOGGER.atError()
       .withMessage(e.message)

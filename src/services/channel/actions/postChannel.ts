@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 
 import Channel from '../../../models/schema/channel.model';
-import Event from '../../../constants/event';
 import Instance from '../../../instance';
 
 export default async (req: Request, res: Response): Promise<void> => {
