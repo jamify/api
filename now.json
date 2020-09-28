@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/server.ts",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+      },
+      "src": "/.*",
+      "dest": "/src/server.ts"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb-uri",
+    "PUSHER_APP_ID": "@pusher-app-id",
+    "PUSHER_KEY": "@pusher-key",
+    "PUSHER_SECRET": "@pusher-secret",
+    "PUSHER_CLUSTER": "@pusher-cluster"
+  }
+}
