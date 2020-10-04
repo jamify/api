@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 
 import Instance from '../../../instance';
 import { Message } from '../../../models/schema';
+import Event from '../../../constants/event';
 
 export default async (req: Request, res: Response): Promise<void> => {
   try {
@@ -12,6 +13,7 @@ export default async (req: Request, res: Response): Promise<void> => {
       userId,
       channelId,
     });
+    Instance.PUSHER.trigger(channelId, Event.MESSAGE, message);
     res.status(201).json({
       isSuccess: true,
       message,
