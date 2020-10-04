@@ -9,7 +9,7 @@ export default async (req: Request, res: Response) => {
     const {
       params: { channelId },
     } = req;
-    const messages: Document[] = await Message.find({ user_id: channelId })
+    const messages: Document[] = await Message.find({ channelId })
       .sort({ updatedAt: -1 })
       .limit(20);
     res.status(200).json({
