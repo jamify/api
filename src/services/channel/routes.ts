@@ -7,7 +7,7 @@ export default [
     handler: getChannel,
   },
   {
-    path: '/channels/:id',
+    path: '/channels/:channelId',
     method: 'patch',
     handler: patchChannel,
   },
