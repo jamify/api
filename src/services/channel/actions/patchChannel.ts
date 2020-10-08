@@ -10,8 +10,6 @@ export default async (req: Request, res: Response): Promise<void> => {
     const channel = await Channel.findByIdAndUpdate(
       channelId,
       {
-        isPaused: req.body.isPaused,
-        position: req.body.position,
         track: req.body.track,
         updatedAt: Date.now(),
       },
